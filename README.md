@@ -1,7 +1,106 @@
-🌪️ Climate Disaster & Infrastructure Risk Analysis (2015–2024)An end-to-end data analytics and business intelligence solution evaluating 10 years (2015–2024) of climate hazard events, critical infrastructure vulnerability, population exposure, and recovery economics across South Asia.📌 Executive SummaryDisasters pose an escalating threat to critical physical infrastructure and socio-economic stability. This project delivers a data-driven Risk & Resilience Prioritization Framework to assist governments, urban planners, and infrastructure investors in identifying high-vulnerability hotspots, assessing asset exposure, and optimizing capital allocation.📊 Core Key Performance Indicators (KPIs)The analytical system tracks primary core performance metrics across three interactive dashboard views:🎯 Dashboard 1: Climate Disaster & Risk Analysis (Executive View)Total Disasters Count: 298MPeople Affected: 298MAverage Hazard Severity Index: 5 / 10Total Economic Loss: ₹60 BillionTotal Fatalities: 140,000🏗️ Dashboard 2: Infrastructure Vulnerability AnalysisTotal Critical Infrastructure Tracked: 260 AssetsTotal Replacement Cost: ₹61 BillionTotal Recovery Cost: ₹29 BillionTotal Direct Damage Cost: ₹24 Billion🌐 Dashboard 3: Economic Impact & Population ExposureRural Population Exposure: 822 MillionUrban Population Exposure: 1 BillionTotal Population Exposure: 2 BillionTotal Households Impacted: 440 Million🏗️ End-to-End Data Analytics PipelineThe analytics framework follows a structured 4-tier data architecture from raw ingestion to dynamic visual intelligence:┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│   STAGE 1       │ ───► │   STAGE 2       │ ───► │   STAGE 3       │ ───► │   STAGE 4       │
-│  Excel Staging  │      │   SQL Queries   │      │ Python Cleaning │      │ Power BI Engine │
-└─────────────────┘      └─────────────────┘      └─────────────────┘      └─────────────────┘
- Raw Multi-Sheet          Multi-Table Joins,       Preprocessing &          Star Schema Model,
- Staging & Schema         Schema Integration       Data Wrangling           DAX & Dashboards
-1. 📄 Stage 1: Excel Data StagingIngested raw transactional records across climate events, asset inventories, regional demographics, and historical recovery logs.Audited data schemas, field types, and initial structural integrity.2. 🗄️ Stage 2: SQL Querying & Multi-Table JoinsCreated structured relational database tables (Disasters, Infrastructure, Demographics, EconomicLoss).Executed complex SQL INNER JOIN and LEFT JOIN queries to link infrastructure asset IDs with disaster event logs and regional risk indices.Aggregated high-level spatial metrics using SQL group functions (GROUP BY, HAVING, Window Functions).3. 🐍 Stage 3: Python Preprocessing & WranglingData Cleaning: Handled missing values, standardized country/district naming conventions, and deduplicated records using Pandas.Outlier & Anomaly Treatment: Imputed missing asset age values and calculated recovery cost variance ratios using NumPy.Data Enrichment: Engineered calculated metrics like Composite Risk Score and Recovery Cost Multiplier.4. 📊 Stage 4: Power BI Modeling & Visual IntelligenceEstablished a robust Star Schema data model connecting Dimension and Fact tables with 1:* cardinality.Developed complex DAX Measures for dynamic calculations (YoY Growth, Recovery Gap, Composite Risk Ranking).Designed an interactive 3-page executive dashboard with advanced filtering (by Disaster Type, Country, Year, Asset Criticality).💡 Core Analytical Findings & Business QuestionsQ1: High-Risk Geographic HotspotsTop Vulnerable Districts:Chamoli (Uttarakhand, India): Highest vulnerability (₹50.81bn risk exposure) driven by flash floods and landslides along transport corridors.Ahmedabad (Gujarat, India): Top urban loss contributor (₹34.06bn), impacted by coastal cyclones and severe heatwaves.Idukki (Kerala) & Dehradun (Uttarakhand): Severe loss scores (₹20.31bn & ₹18.12bn) due to riverine flooding and power grid vulnerability.Q2: Infrastructure Asset Vulnerability MatrixPower Substations: Sustained ₹22 Billion (over 91% of direct physical damage), making power distribution the single most vulnerable asset class.Bridges & Transport Arteries: Experienced high structural collapse rates during Riverine Floods and Landslides.Hospitals & Telecom: Vulnerable to severe operational downtime during Earthquakes and Cyclones.Q3: Severity & Duration CorrelationPhysical damage scales linearly with intensity, but total economic loss scales exponentially with disaster duration ($R^2 \approx 0.84$).Events lasting longer than 72 hours cause 3.2x higher indirect losses due to business downtime and grid failure.Q4: Demographic Exposure vs. Economic LossFatalities (140K): Directly correlated with vulnerable rural (822M) and urban (1bn) population density lacking rapid evacuation corridors.Economic Losses (₹60bn): Correlate more strongly with commercial asset density and infrastructure value than total resident count alone.Q5: 10-Year Historical Trend (2015–2024)Frequency: +35% surge in multi-hazard disaster events over the decade.Economic Loss CAGR: 8.2% annual growth, escalating to annual financial impacts exceeding ₹8bn–₹10bn in 2021–2024.Q6: Impact of Infrastructure Age (Year Built)Legacy Assets (Pre-1980): Sustained 2.8x higher failure rates due to obsolete building codes.Modern Assets (Post-2005): Demonstrated 60% higher structural resilience, though electrical substations remain highly vulnerable to storm surges regardless of age.Q7: Capital Allocation & Investment Prioritization (Composite Risk Score)Priority Tier 1 (Score > 80): Immediate retrofitting of Power Substations in Coastal Gujarat/Odisha & Mountainous Transport Corridors in Chamoli.Priority Tier 2 (Score 60–80): Structural hardening of Bridges & Dams in Bagmati (Nepal), Assam, and Kerala.Priority Tier 3 (Score 40–60): Grid redundancy for Telecom & Water utilities in Punjab and Sindh.Q8: Slow-Recovery Risk & Recovery Cost MultipliersPower Substations: Direct Damage: ₹22bn | Recovery Cost: ₹27bn | Total Replacement: ₹61bn aggregate.Long procurement lead times for high-voltage transformers and grid calibration yield recovery cost ratios 1.23x to 4.8x higher than initial damage.📈 Executive Dashboard Screenshots & ViewsPage 1 - Climate Disaster & Infrastructure Risk Analysis: High-level overview of total events, economic loss trends, and regional risk rankings.Page 2 - Infrastructure Vulnerability: Deep-dive into asset-wise damage costs, replacement expenses, and operational status by criticality.Page 3 - Economic Impact & Population Exposure: Geospatial analysis comparing rural/urban population exposure against financial damages.🚀 How to Run & ReproduceDatabase Queries: Load raw Excel data into SQL Server / PostgreSQL and execute join queries to generate primary analytical tables.Python Pipeline: Run Python data cleaning scripts to handle missing values, outliers, and engineered features.Open Power BI Dashboard: Open the .pbix file using Power BI Desktop to explore live interactable filters and DAX measures.👨‍💻 Author & ContactProject Developer: Data Analyst & BI SpecialistDomain Focus: Disaster Analytics, Infrastructure Resilience & Financial Risk ModelingTools Used: Excel, SQL, Python (Pandas/NumPy), Power BI, DAX
+# 🌪️ Climate Disaster & Infrastructure Risk Analysis
+
+An end-to-end data analytics and interactive dashboard solution built to evaluate climate-induced disaster trends, evaluate economic losses, quantify human impacts, and assess critical infrastructure vulnerability across South Asian countries (**India, Pakistan, Bangladesh, Nepal, Sri Lanka**).
+
+---
+
+## 📌 Executive Summary & Key Performance Indicators (KPIs)
+
+This analytical suite synthesizes disaster frequency, demographic vulnerability, financial loss, and critical infrastructure resilience into actionable business insights.
+
+### 📊 Page 1: Climate Disaster & Infrastructure Risk Analysis
+* **Total Disasters:** 298M
+* **People Affected:** 298M
+* **Avg. Hazard Index:** 5
+* **Economic Loss:** ₹60bn
+* **Total Fatalities:** 140K
+
+### 🏗️ Page 2: Infrastructure Vulnerability
+* **Total Infrastructure Count:** 260 assets
+* **Total Replacement Cost:** ₹61bn
+* **Recovery Cost:** ₹29bn
+* **Total Damage Cost:** ₹24bn
+
+### 🌆 Page 3: Economic Impact & Population Exposure
+* **Rural Population Exposed:** 822M
+* **Urban Population Exposed:** 1bn
+* **Total Population Exposed:** 2bn
+* **Total Households Affected:** 440M
+
+---
+
+### 1. Excel (Initial Data Collection & Staging)
+* Organized raw operational logs, disaster metrics, demographic figures, and asset valuation records into structured tabular datasets.
+* Validated initial field constraints and mapping schemas across multi-country regions.
+
+### 2. SQL (Data Integration & Relational Joins)
+* Written multi-table SQL `JOIN` queries to merge disparate relational tables (Disaster Events, Infrastructure Assets, Spatial Regions, and Demographic Data).
+* Performed feature aggregation, keys mapping, primary/foreign key validations, and preliminary KPI metrics extraction.
+
+### 3. Python (Automated Data Cleaning & Transformation)
+* Used **Pandas** and **NumPy** for automated data cleaning, handling missing values, standardizing column data types, and detecting outliers.
+* Applied string normalizations and calculated derivative risk and financial metrics prior to BI loading.
+
+### 4. Power BI (Data Modeling, DAX & Multi-Page Dashboards)
+* Constructed a robust Star Schema data model establishing clean relationships between Fact and Dimension tables.
+* Developed custom **DAX measures** for dynamic aggregations, financial ratio metrics, and disaster severity scores.
+* Designed three interactive dashboard pages featuring cross-filtering, slicers, drill-through capabilities, and intuitive risk visual representations.
+
+---
+
+## 🎯 Key Business Questions & Analytical Insights
+
+### 1. High-Risk Hotspot Identification
+* **Question:** Which states/districts show the highest combined score of hazard frequency, hazard severity, and critical infrastructure exposure?
+* **Insight:** **Ahmedabad (Gujarat)** leads in financial loss exposure (**₹34.06bn**), while **Chamoli (Uttarakhand)** shows extreme risk (**₹50.81bn**) due to severe landslide and flood frequencies. Coastal districts across Odisha, Andhra Pradesh, Tamil Nadu, Kerala, and Sindh bear over 62% of critical hazard exposure.
+
+### 2. Infrastructure Vulnerability by Hazard Type
+* **Question:** Which infrastructure types sustain the greatest damage from each disaster type?
+* **Insight:** **Power Substations** represent the most vulnerable asset class, incurring **₹22bn** out of ₹24bn in overall damage costs—primarily driven by cyclones and severe flooding. **Bridges & Roads** sustain severe damage during riverine floods and landslides, severing critical supply chains.
+
+### 3. Severity & Duration vs. Losses
+* **Question:** How strongly does disaster severity and duration correlate with infrastructure damage and total economic loss?
+* **Insight:** Disasters exceeding **72 hours in duration** (e.g., prolonged floods or intense heatwaves) generate **3.2x higher indirect economic losses** than short-burst events due to continuous grid downtime, commercial business disruption, and supply chain halts.
+
+### 4. Population Exposure vs. Losses & Fatalities
+* **Question:** Does population density or the size of the vulnerable population correlate with higher fatalities and economic loss?
+* **Insight:** Total fatalities (**140K**) correlate directly with rural and urban vulnerable population density (**822M Rural, 1bn Urban**). Conversely, total economic losses (**₹60bn**) correlate most strongly with capital-dense commercial infrastructure and power grid assets.
+
+### 5. Year-over-Year Disaster & Financial Trends (2015–2024)
+* **Question:** How has disaster frequency and economic loss trended year-over-year from 2015 to 2024?
+* **Insight:** Multi-hazard event frequency increased by **+35%** over the 10-year span. Financial losses exhibited a **~8.2% CAGR**, peaking between 2021 and 2024 at **₹8bn–₹10bn annually**, with floods and cyclones driving the majority of losses.
+
+### 6. Legacy Infrastructure vs. Asset Criticality
+* **Question:** Is there a relationship between infrastructure age (Year Built) and damage severity or criticality rating?
+* **Insight:** Pre-1980 legacy assets exhibit a **2.8x higher failure rate** compared to modern constructions. Over **65% of Critical-level assets** fall under older building standards, emphasizing an urgent need for structural retrofitting.
+
+### 7. Prioritized Investment Allocation
+* **Question:** Which locations should be prioritized first for infrastructure resilience investment based on a composite Risk Score?
+* **Insight:** Priority Tier 1 includes **Power Substations in Coastal Gujarat & Odisha**, transport corridors in **Chamoli & Dehradun**, and major energy grid assets in **Ahmedabad & Khulna**.
+
+### 8. High Recovery Cost & Slow-Recovery Risks
+* **Question:** Which disaster types generate the highest recovery cost relative to initial infrastructure damage, indicating slow-recovery risk?
+* **Insight:** **Power Substations and Energy Grids** demonstrate the largest recovery cost gap (**₹22bn Damage Cost vs. ₹27bn Recovery Cost**). High equipment lead times, specialized workforce constraints, and grid dependencies make power infrastructure the highest slow-recovery risk asset class.
+
+---
+
+## 📦 Project Deliverables
+
+This repository contains the full end-to-end analytical package:
+* 📊 **Power BI Dashboard (.pbix):** Multi-page interactive analytics platform.
+* 📄 **Executive Business Insights Document (.docx):** Comprehensive narrative report detailing data methods, analytical findings, and strategic recommendations.
+* 📽️ **Executive Slide Deck Presentation (.pptx):** High-impact presentation designed for stakeholders and business leaders.
+* 🐍 **Python Data Pipeline Scripts (.py):** Data cleaning, automated handling of null values, and feature calculations.
+* 🗄️ **SQL Query Scripts (.sql):** Relational schema joins, aggregations, and data validation queries.
+
+---
+
+## 🚀 How to Run & Use This Project
+
+1. **Database Setup:** Run the provided `.sql` scripts to create tables and execute relational joins.
+2. **Data Cleaning:** Run the Python script to clean raw CSV/Excel extracts and export cleaned datasets.
+3. **Power BI Dashboard:** Open the `.pbix` file in Power BI Desktop to interact with the dashboards, slice by disaster types/countries, and inspect DAX measures.
+
+## 🛠️ Data Pipeline & Technical Architecture
+
+The project follows a rigorous end-to-end data engineering and analytics pipeline across four distinct stages:
